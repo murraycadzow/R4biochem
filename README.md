@@ -5,4 +5,4 @@ Teaching tools for R in an online environment tailored somewhat towards a Bioche
 
 ## Objectives
 
-[Link](https://hackmd.io/iNYmIo75Qiq_iM0nHLz9zQ?both){:target="_blank"} to the hackmd Brain Storm from Muarry and Matt
+[Link](https://hackmd.io/iNYmIo75Qiq_iM0nHLz9zQ?target=_blank) to the hackmd Brain Storm from Muarry and Matt
