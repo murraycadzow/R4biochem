@@ -1,0 +1,31 @@
+---
+title: "Tidy Data"
+author: "Matt Bixley, Murray Cadzow"
+date: "08/05/2020"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## TIDYVERSE
+
+This markdown workflow for importing and cleaning data is based on the lessons from the Data Carpentries, R for Social Scientists lessons here, https://datacarpentry.org/r-socialsci/03-dplyr-tidyr/index.html
+
+### Exercise 
+
+*Import Data*
+
+Write the R code required to import our data file (NAME OF FILE) from the data directory:
+Hint, use the tidyverse
+
+```{r import, exercise=TRUE}
+library(tidyverse)
+data <- read_csv("data/NAMEOFFILE.csv")
+```
+
+

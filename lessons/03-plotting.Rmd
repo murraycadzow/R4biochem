@@ -1,0 +1,63 @@
+---
+title: "Plotting"
+author: "Matt Bixley, Murray Cadzow"
+date: "08/05/2020"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## GGPLOT2
+
+This markdown workflow for data visualisation is based on the lessons from the Data Carpentries, R for Social Scientists lessons here, https://datacarpentry.org/r-socialsci/04-ggplot2/index.html
+
+### Exercise 
+
+*Import Data*
+
+Write the R code required to import our data file (NAME OF FILE) from the data directory:
+Hint, use the tidyverse
+
+```{r import, exercise=TRUE}
+
+data <- read_csv("data/NAMEOFFILE.csv")
+```
+
+To make a plot, we will use ggplot, with layers added to our graphics that allow felxibility and customization. The same initial syntax is used for all types of plots
+
+ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) +  <GEOM_FUNCTION>()
+
+```{r plot1}
+ggplot(data = data, mapping = aes(x = SOMETHING, y = SOMETHINGELSE)) +  
+  geom_point()
+```
+
+Modify our plot and explore some of the other geoms, eg geom_line, geom_boxplot:
+
+```{r plot2, exercise=TRUE, exercise.eval=TRUE}
+ggplot(data = data, mapping = aes(x = SOMETHING, y = SOMETHINGELSE)) +
+  geom_boxplot()
+```
+
+As we did with importing the data, we can assign our base plot to an object, build layers and modify how it looks. 
+
+```{r plot3}
+p1 <- ggplot(data = data, mapping = aes(x = SOMETHING, y = SOMETHINGELSE)) 
+  
+p1 + geom_point(alpha = 0.5) # alpha amake the points transparent
+```
+
+Take our p1 plot and add some colour to it. A colour can be applied to ALL the points,  or colours can be applied to groups of points. We use aes (aesthetics) if we are mapping colours to groups of data, eg from another variable 
+
+```{r plot4, exercise=TRUE, exercise.eval=TRUE}
+p1 + geom_point(colour = "blue") # makes all points blue
+
+p1 + geom_point(aes(colour = VARIABLE)) # colour points by a variable/column/group
+```
+
