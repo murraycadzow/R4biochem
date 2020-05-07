@@ -17,9 +17,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 This markdown workflow for data visualisation is based on the lessons from the Data Carpentries, R for Social Scientists lessons here, https://datacarpentry.org/r-socialsci/04-ggplot2/index.html
 
-### Exercise 
+### Import Data 
 
-*Import Data*
 
 Write the R code required to import our data file (NAME OF FILE) from the data directory:
 Hint, use the tidyverse
@@ -28,6 +27,9 @@ Hint, use the tidyverse
 
 data <- read_csv("data/NAMEOFFILE.csv")
 ```
+
+
+### Base Plot
 
 To make a plot, we will use ggplot, with layers added to our graphics that allow felxibility and customization. The same initial syntax is used for all types of plots
 
@@ -44,6 +46,8 @@ Modify our plot and explore some of the other geoms, eg geom_line, geom_boxplot:
 ggplot(data = data, mapping = aes(x = SOMETHING, y = SOMETHINGELSE)) +
   geom_boxplot()
 ```
+
+### Customize Plots
 
 As we did with importing the data, we can assign our base plot to an object, build layers and modify how it looks. 
 
