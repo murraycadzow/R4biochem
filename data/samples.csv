@@ -1,0 +1,11 @@
+﻿id,age,sex,height,weight,disease
+sample1,60,m,172,,1
+sample2,43,m,182,,0
+sample3,53,m,189,,1
+sample4,42,m,192,,0
+sample5,37,m,177,,1
+sample6,61,f,169,,0
+sample7,55,f,173,,1
+sample8,56,f,163,,0
+sample9,52,f,174,,1
+sample10,43,f,175,,0
