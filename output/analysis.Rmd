@@ -1,0 +1,33 @@
+---
+title: "Untitled"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+# Background
+```{r importdata}
+#rawcount <- read_csv("C:/Users/Matt/Documents/R/R4biochem/data/rawcounts.csv")
+rawcount <- read_csv("../data/rawcounts.csv")
+```
+
+Take rawcounts.csv and from it create a report for mean fold change per gene.
+work out what genes were ‘interesting’
+add in information about the gene/protein
+Make plots/tables in the report
+
+
+we sent NUMBER samples to XYZ lab for expression profiles from NUMBER2 genes
+
+# Summary
+some summary stats and plots
+
+# Discussion
+no idea what to talk about
+
+# References
