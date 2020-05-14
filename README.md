@@ -5,4 +5,7 @@ Teaching tools for R in an online environment tailored somewhat towards a Bioche
 
 ## Objectives
 
-[Link](https://hackmd.io/iNYmIo75Qiq_iM0nHLz9zQ?both) to the hackmd Brain Storm from Muarry and Matt
+[Link](https://hackmd.io/iNYmIo75Qiq_iM0nHLz9zQ?both) to the hackmd Brain Storm from Murray and Matt
+
+Sample 1 = rawcounts
+Sample 2 = T0 * 0.75 from sample 1

@@ -1,0 +1,83 @@
+---
+title: "Untitled"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: html_document
+bibliography: ../data/r4biochem.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+library(tidyverse)
+```
+
+# Background
+```{r importdata}
+rawcount <- read_csv("../data/rawcounts.csv")
+#head(rawcount)
+```
+
+we sent 10 samples to XYZ lab for expression profiles from NUMBER2 genes. the file is returned with the following column names ```r colnames(rawcount)```. We used the methods from [@breitling2004] in our analysis and maybe use the bioconductor package [@gentleman2004]
+
+
+# Summary
+
+```{r tidy}
+
+## Tidying
+gene_dat <- rawcount %>% 
+  # separate the sgRNA column into multiple new columns based on the "_" character as a delimiter 
+    separate(col = sgRNA, into = c("something","TSS", "strand", "probe_gene"), sep = "_") %>%
+  
+  # separate the column that has the probe and gene info into two columns based on the "-" character
+    separate(col = probe_gene, into = c("probe", "gene"), sep = "-") %>% 
+  
+  ## mutate
+  # Calculate fold change/ probe by using T20/T0
+  mutate(fold_change = T20 / T0)
+
+```
+
+Table of Gene Summary Data
+```{r genetable}
+## gene summary
+gene_summary <- gene_dat %>%
+    group_by(gene) %>%
+    summarise(mean = mean(fold_change, na.rm = T), 
+              sd = sd(fold_change, na.rm = T),
+              n_probes = n())
+
+knitr::kable(gene_summary, 
+             digits = 3, # number of digits
+             align = "lccc", # column alignment
+             caption = "Summary fold change"
+             )
+```
+
+Plot Fold Change by Gene
+
+```{r geneplot, fig.height = 10, fig.align = "center", echo = FALSE }
+p1 <- ggplot(gene_dat, aes(x = gene, y = fold_change)) +
+  #geom_boxplot()
+  geom_violin(alpha = 0) +
+  geom_jitter(alpha = 0.6, width = 0.1, color = "blue") +
+  labs(title = "Distribution of Fold Change\nby Gene",
+       x = "Fold Change",
+       y = "Gene Name") +
+  theme(axis.text.x  = element_text(angle=45, vjust=0.6))
+  
+
+p1
+```
+
+
+# Discussion
+
+```{r bestgene}
+best <- gene_summary %>% 
+  filter(n_probes == max(n_probes)) # filter to the gene with most probes
+```
+
+For no better reason than it's a tidy looking name and has the most probes (n = `r best$n_probes`), we are interested in the gene ***`r best$gene`*** 
+
+# References
